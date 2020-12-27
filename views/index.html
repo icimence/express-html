@@ -1,0 +1,205 @@
+<!DOCTYPE HTML>
+<html lang="zh_CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background-image: linear-gradient(to right, #7f7fd5, #86a8e7, #91eae4);
+        }
+        .masonry {
+            -moz-column-count:3; /* Firefox */
+            -webkit-column-count:3; /* Safari 和 Chrome */
+            column-count:3;
+            -moz-column-gap: 2em;
+            -webkit-column-gap: 2em;
+            column-gap: 2em;
+            width: 70%;
+            padding-top: 50px;
+            margin:2em auto;
+        }
+        .item {
+            /*padding: 2em;*/
+            margin-bottom: 2em;
+            border-radius: 20px;
+            -moz-page-break-inside: avoid;
+            -webkit-column-break-inside: avoid;
+            break-inside: avoid;
+            color: #fff;
+            text-align: center;
+            border-color: whitesmoke;
+            border-style: solid;
+            border-width: 1px;
+        }
+        .item:HOVER {
+            -webkit-transition: border-linear .5s, -webkit-box-shadow linear .8s;
+            border-color: rgba(255, 255, 255, 1);
+            -webkit-box-shadow: 0 0 18px rgba(255, 255, 255, 0.8);
+        }
+        .pic{
+            display: flex;
+            border-radius: 20px;
+            align-content: center;
+            width: auto;
+            height: auto;
+            max-height: 100%;
+            max-width: 100%;
+        }
+
+        @media screen and (max-width: 800px) {
+            .masonry {
+                column-count: 2; /* two columns on larger phones */
+            }
+        }
+        @media screen and (max-width: 500px) {
+            .masonry {
+                column-count: 1; /* two columns on larger phones */
+            }
+        }
+        ul {
+            list-style-type: none;
+            overflow: hidden;
+            background-color: #333;
+            position: fixed;
+            top: 0;
+            width: 100%;
+        }
+
+        li:not(.login) {
+            float: left;
+        }
+
+        .login{
+            float: right;
+        }
+
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        li a:hover:not(.active) {
+            background-color: red;
+        }
+
+        .active {
+            background-color: cornflowerblue;
+        }
+
+        .pic:focus{
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <ul>
+            <li><a class="active" href="#">首页</a></li>
+            <li><a class="contact" href="mailto:icimence@outlook.com">联系我</a></li>
+            <li><a class="about" href="./second.html">关于我</a></li>
+            <li><a class="watermark" href="./third.html">水印说明</a></li>
+            <li class="login"><a class="login" href="./login.html">登录</a> </li>
+
+        </ul>
+    </div>
+    <div class="masonry">
+        <div class="item">
+            <div class="item_content">
+                <img src="https://cdn.jsdelivr.net/gh/icimence/CDN/cover/os.jpg" class="pic" />
+            </div>
+        </div>
+        <div class="item">
+            <div class="item_content">
+                <img src="img/720x1280-1.png" class="pic" alt="logo"/>
+            </div>
+        </div>
+        <div class="item">
+            <div class="item_content">
+                <img src="img/RE1TU8G_1920x1080.jpg" class="pic" alt="logo"/>
+            </div>
+        </div>
+        <div class="item">
+            <div class="item_content">
+                <img src="img/RE1Ybv3_1920x1080.jpg" class="pic" alt="logo"/>
+            </div>
+        </div>
+        <div class="item">
+            <div class="item_content">
+                <img src="img/RE1YbvZ_1920x1080.jpg" class="pic" alt="logo"/>
+            </div>
+        </div>
+        <div class="item">
+            <div class="item_content">
+                <img src="img/RE1YjjM_1920x1080.jpg" class="pic" alt="logo"/>
+            </div>
+        </div>
+<!--        <div class="item">-->
+<!--            <div class="item_content">-->
+<!--                <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1607693487394&di=40f21c631522e78597c466044ae29400&imgtype=0&src=http%3A%2F%2Fimg.ewebweb.com%2Fuploads%2F20190623%2F18%2F1561285221-LqWIvRregC.jpg" class="pic" alt="logo"/>-->
+<!--            </div>-->
+<!--        </div>-->
+        <div class="item">
+            <div class="item_content">
+                <img src="./img/baidu1.png" class="pic" alt="logo"/>
+            </div>
+        </div>
+        <div class="item">
+            <div class="item_content">
+                <img src="./img/baidu2.png" class="pic" alt="logo"/>
+            </div>
+        </div>
+        <div class="item">
+            <div class="item_content">
+                <img src="./img/baidu3.png" class="pic" alt="logo"/>
+            </div>
+        </div>
+        <div class="item">
+            <div class="item_content">
+                <video controls class="pic">
+                    <source src="img/mac.mp4" type="video/mp4">
+                </video>
+            </div>
+        </div>
+        <!--        <div class="item">-->
+        <!--            <div class="item_content content-sma">2 我最小</div>-->
+        <!--        </div>-->
+        <!--        <div class="item">-->
+        <!--            <div class="item_content content-mid">3 我中等</div>-->
+        <!--        </div>-->
+        <!--        <div class="item">-->
+        <!--            <div class="item_content content-sma">4 我最小</div>-->
+        <!--        </div>-->
+        <!--        <div class="item">-->
+        <!--            <div class="item_content content-mid">5 我中等</div>-->
+        <!--        </div>-->
+        <!--        <div class="item">-->
+        <!--            <div class="item_content content-lar">6 我最大</div>-->
+        <!--        </div>-->
+        <!--        <div class="item">-->
+        <!--            <div class="item_content content-sma">7 我最小</div>-->
+        <!--        </div>-->
+        <!--        <div class="item">-->
+        <!--            <div class="item_content content-lar">8 我最大</div>-->
+        <!--        </div>-->
+        <!--        <div class="item">-->
+        <!--            <div class="item_content content-lar">9 我最大</div>-->
+        <!--        </div>-->
+        <!--        <div class="item">-->
+        <!--            <div class="item_content content-sma">10 我最小</div>-->
+        <!--        </div>-->
+        <!--        <div class="item">-->
+        <!--            <div class="item_content content-mid">11 我中等</div>-->
+        <!--        </div>-->
+        <!--        <div class="item">-->
+        <!--            <div class="item_content content-mid">12 我中等</div>-->
+        <!--        </div>-->
+        <!-- more items --></div>
+</body>
+</html>

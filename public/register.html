@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: "Open Sans Light", serif;
+            letter-spacing: .07em;
+        }
+
+        html {
+            height: 100%;
+        }
+
+        body {
+            height: 100%;
+        }
+
+        .wrap {
+            height: 100%;
+            background-image: linear-gradient(to right, #7f7fd5, #86a8e7, #91eae4);
+        }
+
+        .register-wrap {
+            width: 250px;
+            height: 520px;
+            /* 居中开始 */
+            position: relative;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            /* 居中结束 */
+            border-radius: 20px;
+            border-color: whitesmoke;
+            border-style: solid;
+            border-width: 1px;
+            padding: 0 50px; /* 左右留出空余 */
+        }
+
+        .register-wrap:HOVER {
+            -webkit-transition: border-linear .5s, -webkit-box-shadow linear .8s;
+            border-color: rgba(255, 255, 255, 1);
+            -webkit-box-shadow: 0 0 18px rgba(255, 255, 255, 0.8);
+        }
+
+        .register-title {
+            font-size: 25px;
+            text-align: center;
+            line-height: 100px;
+            color: whitesmoke;
+            font-weight: bold;
+        }
+        .register-form{
+            text-align: center;
+            align-items: center;
+        }
+
+        /* 输入设置样式 */
+        .register-form .register-input {
+            display: block; /* input 标签是行内元素 */
+            width: 100%;
+            border: 0;
+            border-bottom: 1px solid #ccc;
+            padding: 10px 0 10px 10px;
+            margin-bottom: 20px;
+            outline: none; /* 输入框边框去掉 */
+            background-color: transparent; /* 透明色 */
+        }
+
+        .register-form .register-input::placeholder {
+            text-transform: uppercase; /* 设置placeholder内容的大小写 */
+            color: whitesmoke;
+        }
+
+        .register-form .register-input:HOVER {
+
+        }
+
+        /* 给登录提交按钮设置样式 */
+        .register-form .register-submit {
+            outline: none;
+            border-radius: 5px;
+            background: #86a8e7;
+            box-shadow:  2px 2px 6px #728fc4,
+            -2px -2px 6px #9ac1ff;
+            width: 100%;
+            line-height: 30px;
+            border: 0;
+            margin-top: 20px;
+            font-size: 16px;
+            text-align: center;
+            cursor: pointer;
+            color: #aa00ff;
+            font-weight: bold;
+        }
+
+        /*.register-submit:focus{*/
+        /*    border-radius: 5px;*/
+        /*    background: linear-gradient(145deg, #7997d0, #8fb4f7);*/
+        /*    box-shadow:  2px 2px 6px #728fc4,*/
+        /*    -2px -2px 6px #9ac1ff;*/
+        /*    border: 0;*/
+        /*}*/
+        .register-submit:hover{
+            border-radius: 5px;
+            background: linear-gradient(145deg, #8fb4f7, #7997d0);
+            box-shadow:  2px 2px 6px #728fc4,
+            -2px -2px 6px #9ac1ff;
+        }
+        .register-submit:active{
+            border-radius: 5px;
+            background: linear-gradient(145deg, #7997d0, #8fb4f7);
+            box-shadow:  2px 2px 6px #728fc4,
+            -2px -2px 6px #9ac1ff;
+            border: 0;
+        }
+
+        /* tip 区域样式 */
+        .tip {
+            display: flex;
+            flex-direction: column;
+            margin-top: 20px;
+        }
+
+        .tip a {
+            padding-left: 150px;
+            text-decoration: none;
+            color: #7d3ebc;
+        }
+        .msg{
+            color: #ff160e;
+            margin-top: 1%;
+        }
+        .asd{color: #0bc52a;}
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="register-wrap">
+            <div class="register-title">
+                Register
+            </div>
+            <div class="register-form">
+                <input type="text" name="user" placeholder="username" class="register-input">
+                <input type="password" name="password" placeholder="password" class="register-input">
+                <input type="password" name="passwordConfirm" placeholder="password-confirm" class="register-input">
+                <input type="text" name="captcha" placeholder="captcha" class="register-input">
+                <img src="/api/captcha" style="cursor: pointer" alt="captcha" rel="imgcap" onclick="get_captcha()"/>
+                <input type="submit" name="register" value="Register" class="register-submit" id="registerConfirm"/>
+                <span class="msg"></span>
+                <span class="asd"></span>
+            </div>
+            <div class="tip">
+                Already have account?<a href="login.html">Sign in</a>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    function get_captcha() {
+        console.log("调用");
+        document.querySelector(".register-form").querySelector("img").src="/api/captcha?d="+Math.random()
+    }
+    $(function () {
+        $('#registerConfirm').click(function () {
+            var user = $('input[type=text]')
+            var pwd1 = $('input[name=password]')
+            var pwd2 = $('input[name=passwordConfirm]')
+            let cap = $('input[name=captcha]')
+            var msg=$('.msg')
+            var datas = { user: user.val(), pwd: pwd1.val() ,cap:cap.val()}
+
+            if (user.val().length === 0 || pwd1.val().length === 0 || pwd2.val().length === 0) {
+                msg.text('请输入用户名和密码')
+                return false
+            } else if (pwd1.val() !== pwd2.val()) {
+                msg.text('两次密码输入不一致')
+                return false
+            } else {
+                $.ajax({
+                    type: 'POST',
+                    url: '/api/register',
+                    dataType: 'json',
+                    data: datas,
+                    success: function (data) {
+                        if(data.code>0){
+                            $(".asd").text(data.msg)
+                            if (data.msg === "注册成功"){
+                                window.location.href="/login.html"
+                            }
+                        }
+                        else
+                            msg.text(data.msg);
+                    },
+                    error: function (error) {
+                        console.log(error)
+                    }
+                })
+            }
+        })
+        // $('button').click(function(){
+        //     location.href='/login.html'
+        // })
+    })
+</script>
+</html>
