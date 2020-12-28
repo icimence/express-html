@@ -52,9 +52,14 @@ router.use('/login', async (req, res) => {
     //     return
     // }
     const loginsql = "select username,password from userinfo where username='" + login.user + "'";
+    console.log(login.pwd)
     connsql.query(loginsql, async (err, result) => {
         if (err) {
             console.log('err message:', err)
+            return
+        }
+        if (result.length === 0){
+            res.json({code: -1, msg: '用户名不存在'})
             return
         }
         const flag = await argon2.verify(result[0].password,login.pwd)
@@ -64,9 +69,11 @@ router.use('/login', async (req, res) => {
 
         } else {
             console.log('用户名密码匹配成功！')
-            res.json({code: 1, msg: '登录成功'})
             req.session.status = true;
             req.session.username = login.user;
+            console.log(req.session)
+            res.json({code: 1, msg: '登录成功'})
+
         }
     })
 })
@@ -116,7 +123,9 @@ router.use('/register', async (req, res) => {
 })
 
 router.get("/status",(req, res) => {
+    console.log(req.session)
     if (req.session.status === true){
+        console.log("用户已登录")
         res.json({status: 1, user: req.session.username })
     }
     else
@@ -125,7 +134,7 @@ router.get("/status",(req, res) => {
 
 router.get("/logout",(req, res) => {
     req.session.destroy(function(err){
-        res.send("退出登录！"+err);
+        res.json({code:1,msg:"推出成功"})
         console.log(err);
     });
 })

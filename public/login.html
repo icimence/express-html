@@ -156,10 +156,10 @@
     }
     $(function(){
         $('#confirmLogin').click(function(){
-            var user=$('input[type=text]')
-            var pwd=$('input[type=password]')
-            var cap=$('input[name=captcha]')
-            var logindata={user:user.val(),pwd:pwd.val(),cap:cap.val()}
+            const user = $('input[type=text]');
+            const pwd = $('input[type=password]');
+            const cap = $('input[name=captcha]');
+            const logindata = {user: user.val(), pwd: pwd.val(), cap: cap.val()};
             if(user.val().length===0&&pwd.val().length===0){
                 console.log("用户名不能为空");
                 $('.msg').text('用户名和密码不能为空')
