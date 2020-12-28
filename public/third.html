@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Third</title>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+    <script src="/javascripts/user.js"></script>
     <style type="text/css">
         * {
             margin: 0;
@@ -59,15 +61,20 @@
         .active {
             background-color: cornflowerblue;
         }
+        .login{
+            float: right;
+        }
     </style>
 </head>
-<body>
+<body onload="checkStatus()">
     <div>
         <ul>
-            <li><a class="active" href="./">首页</a></li>
+            <li><a class="active" href="/">首页</a></li>
             <li><a class="contact" href="mailto:icimence@outlook.com">联系我</a></li>
             <li><a class="about" href="./second.html">关于我</a></li>
             <li><a class="watermark" href="./third.html">水印说明</a></li>
+            <li class="login"><a class="login" href="./login.html" id="username">登录</a> </li>
+            <li style="float: right;display: none"  id="logout"><a class="login" href="/" onclick="logOut()">退出登录</a></li>
         </ul>
     </div>
     <div style="display: flex;flex-direction: column;align-items: center;justify-content: center;margin-top: 60px">

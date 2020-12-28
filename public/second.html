@@ -2,9 +2,14 @@
 <html lang="zh_CN">
 <head>
     <meta charset="UTF-8">
-    <!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
     <title>Info</title>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+    <script src="/javascripts/user.js"></script>
     <style type="text/css">
+        *:not(p) {
+            margin: 0;
+            padding: 0;
+        }
         body {
             margin: 0;
             height: 100%;
@@ -35,12 +40,52 @@
             border-color: rgba(255, 255, 255, 1);
             -webkit-box-shadow: 0 0 18px rgba(255, 255, 255, 0.8);
         }
+        ul {
+            list-style-type: none;
+            overflow: hidden;
+            background-color: #333;
+            position: fixed;
+            top: 0;
+            width: 100%;
+        }
+        li {
+            float: left;
+        }
+
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        li a:hover:not(.active) {
+            background-color: red;
+        }
+
+        .active {
+            background-color: cornflowerblue;
+        }
+        .login{
+            float: right;
+        }
     </style>
 </head>
-<body>
+<body onload="checkStatus()">
+    <div>
+        <ul>
+            <li><a class="active" href="/">首页</a></li>
+            <li><a class="contact" href="mailto:icimence@outlook.com">联系我</a></li>
+            <li><a class="about" href="./second.html">关于我</a></li>
+            <li><a class="watermark" href="./third.html">水印说明</a></li>
+            <li class="login"><a class="login" href="./login.html" id="username">登录</a> </li>
+            <li style="float: right;display: none"  id="logout"><a class="login" href="/" onclick="logOut()">退出登录</a></li>
+        </ul>
+    </div>
     <div style="height: 100%">
         <div class="info-wrap">
-            <h1>My Info</h1>
+            <h1 style="margin-top: 5%">My Info</h1>
             <p>My Name: icimence</p>
             <p>My Email:icimence@outlook.com</p>
         </div>
