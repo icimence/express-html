@@ -44,13 +44,13 @@ router.use('/login', async (req, res) => {
         "pwd": req.body.pwd,
         "cap": req.body.cap
     };
-    // if (login.cap.toLowerCase() !== req.session.captcha) {
-    //     console.log("验证码错误");
-    //     console.log(login.cap);
-    //     console.log(req.session.captcha);
-    //     res.json({code: -1, msg: '验证码错误!'});
-    //     return
-    // }
+    if (login.cap.toLowerCase() !== req.session.captcha) {
+        console.log("验证码错误");
+        console.log(login.cap);
+        console.log(req.session.captcha);
+        res.json({code: -1, msg: '验证码错误!'});
+        return
+    }
     const loginsql = "select username,password from userinfo where username='" + login.user + "'";
     console.log(login.pwd)
     connsql.query(loginsql, async (err, result) => {
@@ -85,13 +85,13 @@ router.use('/register', async (req, res) => {
         "cap": req.body.cap
     }
     console.log("信息导入成功");
-    // if (register.cap.toLowerCase() !== req.session.captcha) {
-    //     console.log("验证码错误");
-    //     console.log(register.cap);
-    //     console.log(req.session.captcha);
-    //     res.json({code: -1, msg: '验证码错误!'});
-    //     return
-    // }
+    if (register.cap.toLowerCase() !== req.session.captcha) {
+        console.log("验证码错误");
+        console.log(register.cap);
+        console.log(req.session.captcha);
+        res.json({code: -1, msg: '验证码错误!'});
+        return
+    }
     const hashPwd = await argon2.hash(register.pwd);
     const regssql = "insert into userinfo(username,password) values('" + register.user + "','" + hashPwd + "')";
     const selsql = "select username from userinfo where username='"+register.user+"'";

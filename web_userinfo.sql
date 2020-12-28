@@ -1,3 +1,4 @@
+drop database if exists web;
 create database if not exists web;
 use web;
 create table if not exists userinfo(username char(255),password char(255));
