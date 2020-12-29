@@ -166,18 +166,28 @@
     }
     $(function () {
         $('#registerConfirm').click(function () {
-            var user = $('input[type=text]')
-            var pwd1 = $('input[name=password]')
-            var pwd2 = $('input[name=passwordConfirm]')
+            const user = $('input[type=text]');
+            const pwd1 = $('input[name=password]');
+            const pwd2 = $('input[name=passwordConfirm]');
             let cap = $('input[name=captcha]')
-            var msg=$('.msg')
-            var datas = { user: user.val(), pwd: pwd1.val() ,cap:cap.val()}
-
+            const msg = $('.msg');
+            msg.textContent=""
+            let pwdpatrn = /^([a-zA-Z0-9]|[_]){6,18}$/;
+            let usernamepatrn = /^[a-zA-Z]{1}([a-zA-Z0-9]|[._]){4,19}$/;
+            const datas = {user: user.val(), pwd: pwd1.val(), cap: cap.val()};
             if (user.val().length === 0 || pwd1.val().length === 0 || pwd2.val().length === 0) {
                 msg.text('请输入用户名和密码')
                 return false
             } else if (pwd1.val() !== pwd2.val()) {
                 msg.text('两次密码输入不一致')
+                return false
+            } else if (!pwdpatrn.exec(pwd1.val())){
+                console.log(pwd1.val())
+                msg.text("必须使用6-18位含有字母、数字、下划线（可选）组成的密码!")
+                return false
+            } else if (!usernamepatrn.exec(user.val())){
+                console.log(user.val())
+                msg.text("只能使用5-20个以字母开头、可带数字、“_”、“.”的用户名")
                 return false
             } else {
                 $.ajax({
