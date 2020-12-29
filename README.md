@@ -21,6 +21,22 @@ node bin/www
 
 访问localhost:3000即可。
 
+已经预注册的账户有：
+
+1. username: test , password:pwdfortest
+2. username: test2 , password:pwdfortest2
+3. username: test3 , password:pwdfortest3
+
+## 界面展示
+
+![index](C:\Users\icimence\Desktop\webhomework3\截图展示\index.png)
+
+![login](C:\Users\icimence\Desktop\webhomework3\截图展示\login.png)
+
+![login-index](C:\Users\icimence\Desktop\webhomework3\截图展示\login-index.png)
+
+![register](C:\Users\icimence\Desktop\webhomework3\截图展示\register.png)
+
 ## 项目说明
 
 ### 框架
