@@ -162,7 +162,6 @@
 </body>
 <script>
     function get_captcha() {
-        console.log("调用");
         document.querySelector(".register-form").querySelector("img").src="/api/captcha?d="+Math.random()
     }
     $(function () {

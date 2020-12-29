@@ -133,9 +133,7 @@ router.get("/status",(req, res) => {
 })
 
 router.get("/logout",(req, res) => {
-    console.log("调用");
     req.session.destroy();
-    console.log(req.session)
     res.json({code:1,msg:"推出成功"})
 })
 module.exports = router;

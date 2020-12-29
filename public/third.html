@@ -227,7 +227,7 @@
             // 获取指定区域的canvas像素信息
             ctx.drawImage(img, 0, 0);
             originalData = ctx.getImageData(0, 0, ctx.canvas.width, ctx.canvas.height);
-            console.log(originalData)
+            // console.log(originalData)
             processData(ctx, originalData)
         };
         img.src = src;

@@ -1,11 +1,8 @@
 function checkStatus(){
-    console.log("diaoyong")
     $.ajax({
         type: 'get',
         url:'/api/status',
         success:function (data){
-            console.log("请求发送成功")
-            console.log(data)
             if (data.status === 1){
                 document.querySelector("#username").textContent = data.user;
                 document.querySelector("#logout").style.display = "block";
