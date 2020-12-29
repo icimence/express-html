@@ -27,7 +27,7 @@ router.get('/captcha', function (req, res, next) {
         size: 5,
         noise: 4,
         color: true,
-        ignoreChars: '0o1ilLI',
+        ignoreChars: '0oO1ilLI',
         background: '#ccc',
     }); // 此时创建的图形验证码默认为四个字符和一根干扰线条，背景色默认无
     req.session.captcha = cap.text.toLowerCase();
