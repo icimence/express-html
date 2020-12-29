@@ -29,13 +29,13 @@ node bin/www
 
 ## 界面展示
 
-![index](C:\Users\icimence\Desktop\webhomework3\截图展示\index.png)
+![index](./截图展示/index.png)
 
-![login](C:\Users\icimence\Desktop\webhomework3\截图展示\login.png)
+![login](./截图展示/login.png)
 
-![login-index](C:\Users\icimence\Desktop\webhomework3\截图展示\login-index.png)
+![login-index](./截图展示/login-index.png)
 
-![register](C:\Users\icimence\Desktop\webhomework3\截图展示\register.png)
+![register](./截图展示/register.png)
 
 ## 项目说明
 
