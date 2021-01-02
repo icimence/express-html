@@ -20,7 +20,13 @@
 
 ## 启动方法
 
-首先运行`web_userinfo.sql`，推荐使用MySQL5.7，如果使用MySQL8需要使用改变`root@localhost`的密码加密方式，改回MySQL5使用的mysql_native_password。
+首先运行`web_userinfo.sql`，推荐使用MySQL5.7，如果使用MySQL8需要使用改变`root@localhost`的密码加密方式，改回MySQL5使用的mysql_native_password。切换方式如下：
+
+```bash
+alter user 'root'@'localhost' identified with mysql_native_password by 'your password';
+```
+
+
 
 之后再文件夹中命令行运行
 
