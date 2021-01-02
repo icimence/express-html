@@ -4,7 +4,7 @@ function checkStatus(){
         url:'/api/status',
         success:function (data){
             if (data.status === 1){
-                document.querySelector("#username").textContent = data.user;
+                document.querySelector("#username").textContent = data.user+"(切换账户)";
                 document.querySelector("#logout").style.display = "block";
             }
             else{
@@ -22,7 +22,7 @@ function logOut(){
         type:'get',
         url:'/api/logout',
         success:function (data){
-            if (data.status === 1){
+            if (data.code === 1){
                 document.querySelector("#username").textContent = "登录";
                 document.querySelector("#logout").style.display = "none";
             }

@@ -134,6 +134,6 @@ router.get("/status",(req, res) => {
 
 router.get("/logout",(req, res) => {
     req.session.destroy();
-    res.json({code:1,msg:"推出成功"})
+    res.json({code:1,msg:"退出成功"})
 })
 module.exports = router;
